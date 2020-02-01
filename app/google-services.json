@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "893159254151",
+    "firebase_url": "https://geekshub-bbeaf.firebaseio.com",
+    "project_id": "geekshub-bbeaf",
+    "storage_bucket": "geekshub-bbeaf.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:893159254151:android:d6439b05fac39041f93022",
+        "android_client_info": {
+          "package_name": "com.example.geekshub"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "893159254151-0n26dd47ve05bm7938qtv6n6t0gdmm2n.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.geekshub",
+            "certificate_hash": "f9eb70eba89147b9ea5628127da4f719707b1562"
+          }
+        },
+        {
+          "client_id": "893159254151-mi609k465e0raftgf3caoddq3opilcun.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAMawrsjXoSQhoyorb31mkKG_2-aYffUsk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "893159254151-mi609k465e0raftgf3caoddq3opilcun.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
