@@ -2,8 +2,11 @@ package com.example.geekshub.data;
 
 public class BookModel {
 
-    private String id ,name , picture , describtion;
-    private int price;
+       private String describtion ,id,name,picture;
+       private int price ;
+
+
+    public BookModel(){}
 
     public void setId(String id) {
         this.id = id;
@@ -44,6 +47,7 @@ public class BookModel {
     public String getPicture() {
         return picture;
     }
+
 
 
 }
