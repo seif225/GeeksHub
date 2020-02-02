@@ -8,6 +8,7 @@ import android.app.Application;
 import android.os.Bundle;
 import android.util.Log;
 
+import com.example.geekshub.BooksSorting;
 import com.example.geekshub.R;
 import com.example.geekshub.data.BookModel;
 import com.example.geekshub.data.FirebaseQueryRepo;
@@ -30,8 +31,13 @@ public class MainActivity extends AppCompatActivity {
         booksViewModel.getListMutableLiveData(this.getApplication()).observe(this, new Observer<List<BookModel>>() {
             @Override
             public void onChanged(List<BookModel> bookModels) {
-                if (bookModels != null) Log.d(TAG, "onChanged: " + bookModels.get(0).getName());
+                if (bookModels != null)
+                    for (int i = 0; i <bookModels.size() ; i++) {
+                        BooksSorting.sortArrayList(bookModels);
+                        Log.d(TAG, "onChanged: " + bookModels.get(i).getName() + " " + bookModels.get(i).getPrice());
+                    }
             }
+
 
         });
 
