@@ -33,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
             public void onChanged(List<BookModel> bookModels) {
                 if (bookModels != null)
                     for (int i = 0; i <bookModels.size() ; i++) {
-                        BooksSorting.sortArrayList(bookModels);
+                        BooksSorting.sortArrayListDescending(bookModels);
                         Log.d(TAG, "onChanged: " + bookModels.get(i).getName() + " " + bookModels.get(i).getPrice());
                     }
             }
