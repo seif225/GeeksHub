@@ -67,4 +67,5 @@ dependencies {
 
     //LeakCanary
     debugImplementation 'com.squareup.leakcanary:leakcanary-android:2.1'
+    implementation 'androidx.cardview:cardview:1.0.0'
 }
