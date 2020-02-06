@@ -11,6 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.lifecycle.ViewModel;
 
 import com.example.geekshub.ui.MainActivity;
+import com.example.geekshub.ui.SignUpActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -56,6 +57,9 @@ public class AuthViewModel extends ViewModel {
                             Toast.makeText(context, "Sorry dude , something went wrong", Toast.LENGTH_SHORT).show();
                         }
                     });
+                } else {
+                    progressDialog.dismiss();
+                    Toast.makeText(context, "Sorry dude , something went wrong", Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -73,4 +77,9 @@ public class AuthViewModel extends ViewModel {
         context.startActivity(i);
     }
 
+    public void sendUserToSignUp(Context baseContext) {
+        Intent i = new Intent(baseContext, SignUpActivity.class);
+        i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        baseContext.startActivity(i);
+    }
 }
