@@ -1,15 +1,12 @@
 package com.example.geekshub.viewModel;
-
 import android.app.Application;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.widget.Toast;
-
 import androidx.annotation.NonNull;
 import androidx.lifecycle.ViewModel;
-
 import com.example.geekshub.ui.MainActivity;
 import com.example.geekshub.ui.SignUpActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -22,10 +19,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 public class AuthViewModel extends ViewModel {
-
-
     private FirebaseAuth mAuth;
-
     public void Authenticate(String mail, String password, final ProgressDialog progressDialog, final Context context) {
         progressDialog.setMessage("please wait ..");
         progressDialog.setCancelable(false);
@@ -50,7 +44,6 @@ public class AuthViewModel extends ViewModel {
                                 sendUserToInfo(context);
                             }
                         }
-
                         @Override
                         public void onCancelled(@NonNull DatabaseError databaseError) {
                             progressDialog.dismiss();
@@ -64,19 +57,16 @@ public class AuthViewModel extends ViewModel {
             }
         });
     }
-
     private void sendUserToMain(Context context) {
         Intent i = new Intent(context, MainActivity.class);
         i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
         context.startActivity(i);
     }
-
     private void sendUserToInfo(Context context) {
         Intent i = new Intent(context, MainActivity.class);
         i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
         context.startActivity(i);
     }
-
     public void sendUserToSignUp(Context baseContext) {
         Intent i = new Intent(baseContext, SignUpActivity.class);
         i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
