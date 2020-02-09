@@ -94,7 +94,7 @@
                     android:textColor="#fff"
                     android:textSize="12sp" />
 
-.                <RelativeLayout
+                <RelativeLayout
                     android:layout_width="70dp"
                     android:layout_height="4dp"
                     android:layout_marginTop="8dp"
