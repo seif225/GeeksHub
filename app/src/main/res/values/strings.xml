@@ -1,3 +1,14 @@
 <resources>
     <string name="app_name">GeeksHub</string>
+    <string name="book_prompt">Choose a book</string>
+    <string-array name="book_arrays">
+        <item>Comedy</item>
+        <item>Programming</item>
+        <item>Sci-fi</item>
+        <item>Political</item>
+        <item>Children</item>
+        <item>Philosophy</item>
+        <item>Religion</item>
+        <item>Adventure</item>
+    </string-array>
 </resources>
