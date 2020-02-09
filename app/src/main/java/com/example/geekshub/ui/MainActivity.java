@@ -1,48 +1,58 @@
 package com.example.geekshub.ui;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProviders;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 
-import com.example.geekshub.dataStructuresAndAlgorithims.BooksSorting;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProviders;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.example.geekshub.R;
 import com.example.geekshub.data.BookModel;
+import com.example.geekshub.dataStructuresAndAlgorithims.BooksSorting;
 import com.example.geekshub.viewModel.BooksViewModel;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.FirebaseAuth;
 
+import java.util.ArrayList;
 import java.util.List;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
 
 public class MainActivity extends AppCompatActivity {
 
     BooksViewModel booksViewModel;
     private static final String TAG = "MainActivity";
-
+    @BindView(R.id.recycler_view_horizontal_list)
+    RecyclerView recyclerViewHorizontalList;
+    RecyclerViewAdapter recyclerViewAdapter;
+    List<BookModel> bookModelArrayList;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        ButterKnife.bind(this);
         FirebaseApp.initializeApp(this);
+        bookModelArrayList = new ArrayList<>();
+        recyclerViewAdapter = new RecyclerViewAdapter(bookModelArrayList, this);
+        recyclerViewHorizontalList.setLayoutManager(new LinearLayoutManager(this));
+        recyclerViewHorizontalList.setAdapter(recyclerViewAdapter);
         booksViewModel = ViewModelProviders.of(this).get(BooksViewModel.class);
         booksViewModel.getListMutableLiveData(this.getApplication()).observe(this, new Observer<List<BookModel>>() {
             @Override
             public void onChanged(List<BookModel> bookModels) {
-                if (bookModels != null)
-                    for (int i = 0; i <bookModels.size() ; i++) {
-                        BooksSorting.DesMergeSort(bookModels);
-                        Log.d(TAG, "onChanged: " + bookModels.get(i).getName() + " " + bookModels.get(i).getPrice());
-                    }
+                recyclerViewAdapter = new RecyclerViewAdapter(bookModels, getBaseContext());
+                recyclerViewHorizontalList.setLayoutManager(new LinearLayoutManager(getBaseContext()
+                        ,LinearLayoutManager.HORIZONTAL,false));
+                recyclerViewHorizontalList.setAdapter(recyclerViewAdapter);
             }
 
 
         });
-        //Start Here
-
-
 
 
     }
@@ -50,9 +60,9 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
-        if(FirebaseAuth.getInstance().getCurrentUser()==null){
-            Intent i = new Intent(this,LoginActivity.class);
-            i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
+        if (FirebaseAuth.getInstance().getCurrentUser() == null) {
+            Intent i = new Intent(this, LoginActivity.class);
+            i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
             startActivity(i);
         }
 
