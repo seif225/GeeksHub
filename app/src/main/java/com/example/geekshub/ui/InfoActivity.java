@@ -78,7 +78,7 @@ public class InfoActivity extends AppCompatActivity {
                 String mail = mailAddressEt.getText().toString();
                 if(name.isEmpty()){
                     userNameEt.requestFocus();
-                    userNameEt.setText("you have to write your name");
+                    userNameEt.setError("you have to write your name");
                 }
                 else if (mail.isEmpty()){
                     mailAddressEt.requestFocus();

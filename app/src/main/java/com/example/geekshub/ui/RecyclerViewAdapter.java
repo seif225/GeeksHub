@@ -15,12 +15,15 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.example.geekshub.R;
 import com.example.geekshub.data.BookModel;
+import com.example.geekshub.data.UserModel;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Observer;
 
 import de.hdodenhof.circleimageview.CircleImageView;
+import io.reactivex.Observable;
 
 public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder> {
     private List<BookModel> bookModelArrayList;
@@ -42,8 +45,10 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     public void onBindViewHolder(@NonNull RecyclerViewAdapter.ViewHolder holder, int position) {
         BookModel bookModel = bookModelArrayList.get(position);
         holder.bookName.setText(bookModel.getName());
+
+
         if (bookModel.getPicture() != null)
-            Picasso.get().load(bookModel.getPicture()).into(holder.book_img);
+            Picasso.get().load(bookModel.getPicture()).resize(600,800).into(holder.book_img);
     }
 
     @Override
