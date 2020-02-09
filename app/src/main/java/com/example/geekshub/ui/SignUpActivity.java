@@ -100,6 +100,7 @@ public class SignUpActivity extends AppCompatActivity {
                     SharedPreferences sharedPreferences = getBaseContext().getSharedPreferences("MyPref", 0);
                     SharedPreferences.Editor editor = sharedPreferences.edit();
                     editor.putString("userId", mAuth.getUid());
+                    editor.commit();
                     progressDialog.dismiss();
                     sendUserToInfo();
                 }
