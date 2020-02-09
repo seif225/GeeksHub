@@ -60,7 +60,7 @@ dependencies {
     //algolia instant search
     implementation 'com.algolia:algoliasearch-android:3.+'
 
-//Reactive X
+    //Reactive X
     implementation 'io.reactivex.rxjava2:rxandroid:2.1.1'
 
     implementation 'io.reactivex.rxjava2:rxjava:2.x.x'

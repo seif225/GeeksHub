@@ -33,6 +33,8 @@ public class AuthViewModel extends ViewModel {
                     SharedPreferences.Editor editor = pref.edit();
                     final String userId = mAuth.getUid();
                     editor.putString("userId", userId);
+                    editor.commit();
+
                     FirebaseDatabase.getInstance().getReference().addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
