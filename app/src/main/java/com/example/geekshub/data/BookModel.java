@@ -1,10 +1,20 @@
 package com.example.geekshub.data;
 
+import android.net.Uri;
+
 public class BookModel {
 
-       private String describtion ,id,name,picture;
+       private String describtion ,id,name,picture , category, publisher , author;
        private int price ;
+       private Uri ImageUri;
 
+    public void setImageUri(Uri imageUri) {
+        ImageUri = imageUri;
+    }
+
+    public Uri getImageUri() {
+        return ImageUri;
+    }
 
     public BookModel(){}
 
@@ -48,6 +58,27 @@ public class BookModel {
         return picture;
     }
 
+    public void setAuthor(String author) {
+        this.author = author;
+    }
 
+    public void setCategory(String category) {
+        this.category = category;
+    }
 
+    public void setPublisher(String publisher) {
+        this.publisher = publisher;
+    }
+
+    public String getAuthor() {
+        return author;
+    }
+
+    public String getCategory() {
+        return category;
+    }
+
+    public String getPublisher() {
+        return publisher;
+    }
 }

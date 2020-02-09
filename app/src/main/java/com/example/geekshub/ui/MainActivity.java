@@ -61,16 +61,13 @@ public class MainActivity extends AppCompatActivity {
 
 
         });
-
         logoutBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 FirebaseAuth.getInstance().signOut();
                 sendUserToLogin();
-
             }
         });
-
 
     }
 
@@ -89,6 +86,16 @@ public class MainActivity extends AppCompatActivity {
             i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
             startActivity(i);
         }
+        else if(FirebaseAuth.getInstance().getUid().equals("6gK29IAIxKWOHjROaklxC7hA8qq1")){
+            sendUserToAdminPanel();
+        }
+
+    }
+
+    private void sendUserToAdminPanel() {
+    Intent i = new Intent(this,AdminPanelActivity.class);
+    i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+    startActivity(i);
 
     }
 }
