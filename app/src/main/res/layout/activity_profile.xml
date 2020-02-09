@@ -175,7 +175,7 @@
             android:background="@drawable/butoon_follow_background"
             android:foreground="?android:attr/selectableItemBackground"
             android:text="F O L L O W"
-            android:textColor="#03ae7d"
+            android:textColor="#303269"
             android:textSize="18sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
