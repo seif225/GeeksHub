@@ -87,6 +87,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Book Price"
+            android:inputType="number"
             app:layout_constraintStart_toStartOf="@id/tv_publisher"
             app:layout_constraintTop_toBottomOf="@id/tv_bookPrice" />
 

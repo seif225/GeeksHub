@@ -18,6 +18,8 @@ import com.example.geekshub.R;
 import com.example.geekshub.data.BookModel;
 import com.example.geekshub.viewModel.BooksViewModel;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.firebase.auth.FirebaseAuth;
+import com.squareup.picasso.Picasso;
 import com.theartofdev.edmodo.cropper.CropImage;
 import com.theartofdev.edmodo.cropper.CropImageView;
 
@@ -119,6 +121,8 @@ public class AdminPanelActivity extends AppCompatActivity {
                     bookModel.setPublisher(publisher);
                     bookModel.setDescribtion(des);
                     bookModel.setImageUri(resultUri);
+                    bookModel.setCategory(gener);
+                    Picasso.get().load(resultUri).into(imgBookPhoto);
                     Log.e(TAG, "onClick: " + resultUri );
                     viewModel.addBook(bookModel, getBaseContext(),getApplication());
                 }
@@ -127,6 +131,21 @@ public class AdminPanelActivity extends AppCompatActivity {
             }
         });
 
+        logoutButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FirebaseAuth.getInstance()
+                        .signOut();
+                sendUserToLogin();
+            }
+        });
+
+    }
+
+    private void sendUserToLogin() {
+    Intent i = new Intent ( this , LoginActivity.class);
+    i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
+    startActivity(i);
     }
 
     private String getGenerName(int selectedItemId) {

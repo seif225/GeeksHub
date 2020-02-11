@@ -104,7 +104,7 @@ public class FirebaseQueryRepo implements IFirebaseQueryRepo {
     }
 
     @Override
-    public void addBook(BookModel bookModel, final Context context) {
+    public void addBook(final BookModel bookModel, final Context context) {
         Observable<BookModel> observable = Observable.just(bookModel);
         Observer<BookModel> single = new Observer<BookModel>() {
             @Override
@@ -112,7 +112,7 @@ public class FirebaseQueryRepo implements IFirebaseQueryRepo {
             }
 
             @Override
-            public void onNext(final BookModel bookModel) {
+            public void onNext(final BookModel bookModel1) {
 
                 final String random = UUID.randomUUID().toString();
                 final String fileName = random + ".jpg";
@@ -127,13 +127,38 @@ public class FirebaseQueryRepo implements IFirebaseQueryRepo {
                                 String link = uri.toString();
                                 Log.e(TAG, link + " this is pic link ");
                                 bookModel.setPicture(link);
+                                bookModel.setId(random);
                                 Log.e(TAG, link + " added the pic to the object ! ");
+
 
                             }
                         }).addOnCompleteListener(new OnCompleteListener<Uri>() {
                             @Override
                             public void onComplete(@NonNull Task<Uri> task) {
-                                BOOKS_REF.child(random).setValue(bookModel).addOnCompleteListener(new OnCompleteListener<Void>() {
+
+
+                                Log.e(TAG, bookModel.getAuthor()+"");
+                                Log.e(TAG, bookModel.getCategory()+"");
+                                Log.e(TAG, bookModel.getDescribtion()+"");
+                                Log.e(TAG, bookModel.getPublisher()+"");
+                                Log.e(TAG, bookModel.getId()+"");
+                                Log.e(TAG, bookModel.getName()+"");
+                                Log.e(TAG, bookModel.getPicture()+"");
+                                Log.e(TAG, bookModel.getPrice()+"");
+
+                                BOOKS_REF.child(random).child("author").setValue(bookModel.getAuthor());
+                                BOOKS_REF.child(random).child("category").setValue(bookModel.getCategory());
+                                BOOKS_REF.child(random).child("describtion").setValue(bookModel.getDescribtion());
+                                BOOKS_REF.child(random).child("publisher").setValue(bookModel.getPublisher());
+                                BOOKS_REF.child(random).child("id").setValue(bookModel.getId());
+                                BOOKS_REF.child(random).child("name").setValue(bookModel.getName());
+                                BOOKS_REF.child(random).child("price").setValue(bookModel.getPrice());
+                                BOOKS_REF.child(random).child("picture").setValue(bookModel.getPicture());
+
+
+
+
+                                /*.addOnCompleteListener(new OnCompleteListener<Void>() {
                                     @Override
                                     public void onComplete(@NonNull Task<Void> task) {
                                         Log.e(TAG, "onComplete: " + " i went this far");
@@ -146,7 +171,7 @@ public class FirebaseQueryRepo implements IFirebaseQueryRepo {
 
                                         }
                                     }
-                                });
+                                });*/
 
                             }
                         });
